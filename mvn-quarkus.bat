@@ -1,0 +1,1 @@
+mvn io.quarkus:quarkus-maven-plugin:0.21.2:create -DprojectGroupId=net.stedin.werkorderservice -DprojectArtifactId=werkorder-service -DclassName="net.stedin.werkorderservice.rest.WerkorderService" -Dpath="/werkorders" -Dextensions="resteasy-jackson,openapi,opentracing"
