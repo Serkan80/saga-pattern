@@ -1,6 +1,7 @@
 package net.stedin.werkorderservice.config;
 
 import java.time.ZoneId;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -10,6 +11,7 @@ import javax.ws.rs.Produces;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
  * JacksonConfig
@@ -21,10 +23,10 @@ public class JacksonConfig {
     @Produces
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
-        Jav
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.setDateFormat(new StdDateFormat().withTimeZone(TimeZone.getTimeZone(ZoneId.of("Europe/Amsterdam")))
-                .withColonInTimeZone(true));
+        mapper.registerModule(new JavaTimeModule());
+        mapper.setDateFormat(new StdDateFormat().withLocale(new Locale("nl", "NL"))
+                .withTimeZone(TimeZone.getTimeZone(ZoneId.of("Europe/Amsterdam"))).withColonInTimeZone(true));
         return mapper;
     }
 }

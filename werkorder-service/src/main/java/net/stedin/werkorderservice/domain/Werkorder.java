@@ -1,12 +1,12 @@
 package net.stedin.werkorderservice.domain;
 
-import lombok.Data;
-import lombok.ToString;
-
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+
+import lombok.Data;
+import lombok.ToString;
 
 @Data
 @ToString
@@ -18,7 +18,7 @@ public class Werkorder {
     private String aangemaaktDoor;
 
     @JsonFormat(shape = Shape.STRING)
-    private LocalDateTime aanmaakDatum;
+    private Date aanmaakDatum;
     private String omschrijving;
     private String commentaar;
     private Adres adres;

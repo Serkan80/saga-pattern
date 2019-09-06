@@ -2,8 +2,8 @@ package net.stedin.werkorderservice.rest;
 
 import static net.stedin.werkorderservice.domain.WerkorderStatus.INACTIEF;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -43,7 +43,7 @@ public class WerkorderService {
     public void save(Werkorder wo) {
         Long id = (long) werkorders.size() + 1;
         wo.setId(id);
-        wo.setAanmaakDatum(LocalDateTime.now());
+        wo.setAanmaakDatum(new Date());
         wo.setStatus(INACTIEF);
         werkorders.add(wo);
         this.log.debug("new wo added:\n" + wo);
